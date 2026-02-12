@@ -1,0 +1,14 @@
+version: 0.2
+
+phases: 
+  install: 
+   command: 
+     - echo "install phase"
+  build: 
+     commands: 
+        - echo "building phase started"
+        - ls -la 
+        - cat index.html
+  post_build: 
+      commands: 
+         - echo "build completed"
