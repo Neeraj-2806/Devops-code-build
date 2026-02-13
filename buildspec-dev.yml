@@ -3,17 +3,17 @@ version: 0.2
 phases:
   install:
     commands:
-      - echo "Installing nginx"
+      - echo "Installing nginx and zip"
       - apt-get update
       - apt-get install nginx -y
+      - apt-get install zip -y
 
   build:
     commands:
       - echo "Build started on $(date)"
-      - cp index.html /var/www/html/
+      - cp index.html /var/www/html/ || true
+      - zip -r app.zip . -x ".git/*"
 
 artifacts:
   files:
-    - '**/*'
-  exclude-paths: 
-   - .git/**/*
+    - app.zip
